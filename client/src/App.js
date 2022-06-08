@@ -4,9 +4,6 @@ import {Route, Routes} from 'react-router-dom'
 import PageWrapper from "./PageWrapper";
 import Home from "./Home";
 
-const
-
-
 
 function App() {
   return (
