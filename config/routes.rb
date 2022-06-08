@@ -16,6 +16,12 @@ Rails.application.routes.draw do
     get '/dishes/:id', to:'dishes#show' # return 1 dish
     put '/dishes/:id', to:'dishes#update' # update 1 dish {name(required), price, descrption}
     delete '/dishes/:id', to:'dishes#destroy' # destroy 1 dish
+
+    get '/things', to:'things#index'
+    post '/things', to:'things#create'
+    get '/things/:id', to:'things#show'
+    put '/things/:id', to:'things#update'
+    delete '/things/:id', to:'things#destroy'
   end
 end
 
