@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import DishForm from "./DishForm";
+import UpdateDishForm from "./UpdateDishForm";
 
 // # get '/dishes',  # return all dishes
 // # post '/dishes',  # create a dish {name(required), price, descrption}
@@ -14,43 +15,49 @@ function App() {
   const [dishes, setDishes] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [name, setName] = useState("asdfasdf");
 
   // load data on mount
   useEffect(() => {
     getDishes();
   }, []);
 
-  const addDish = (dish)=>{
-    setDishes([dish, ...dishes])
-  }
+  const addDish = (dish) => {
+    setDishes([dish, ...dishes]);
+  };
 
   const getDishes = async () => {
     try {
       let res = await axios.get("/api/dishes");
       // it is not always going to be res.data
-      console.log('res', res)
+      console.log("res", res);
       setDishes(res.data);
       setLoading(false);
     } catch (err) {
       // check
-      alert('error occured')
+      alert("error occured");
       setError(err);
       setLoading(false);
     }
   };
 
-  // already defined by bob
-  const deleteDish =(dish)=>{
+  const someFunctionIwantToKeep = () => {};
 
-  }
+  const deleteDish = async (id) => {
+    try {
+      let res = await axios.delete(`/api/dishes/${id}`);
+      // if successful remove from UI (assume this will work)
+      let newDishes = dishes.filter((d) => d.id !== res.data.id);
+      setDishes(newDishes);
+    } catch (err) {
+      alert("err occured");
+    }
+  };
 
-  const someFunctionIwantToKeep =()=>{
-
-  }
-
-  const someFunctionIdontWantToKeep =()=>{
-    
-  }
+  const updateDish = (dish) => {
+    let updatedDishes = dishes.map((d) => (d.id === dish.id ? dish : d));
+    setDishes(updatedDishes);
+  };
 
   const renderDishes = () => {
     if (loading) {
@@ -59,21 +66,23 @@ function App() {
     if (error) {
       return <p>{JSON.stringify(error)}</p>;
     }
-   return dishes.map(d=>{
+    return dishes.map((d) => {
       return (
-        <div key={d.id} style={{margin:'20px', border:'1px solid'}}>
-          <h1>{d.name}: ${d.price}</h1>
+        <div key={d.id} style={{ margin: "20px", border: "1px solid" }}>
+          <h1>
+            {d.name}: ${d.price}
+          </h1>
           <p>{d.description}</p>
-          <button>delete</button>
+          <button onClick={() => deleteDish(d.id)}>delete</button>
+          <UpdateDishForm {...d} updateDish={updateDish} />
         </div>
-      )
-    })
- 
+      );
+    });
   };
 
   return (
     <div className="App">
-      <DishForm addDish={addDish}/>
+      <DishForm addDish={addDish} />
       <h1>Dishes</h1>
       <div>{renderDishes()}</div>
     </div>
