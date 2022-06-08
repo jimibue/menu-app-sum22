@@ -39,6 +39,19 @@ function App() {
     }
   };
 
+  // already defined by bob
+  const deleteDish =(dish)=>{
+
+  }
+
+  const someFunctionIwantToKeep =()=>{
+
+  }
+
+  const someFunctionIdontWantToKeep =()=>{
+    
+  }
+
   const renderDishes = () => {
     if (loading) {
       return <p>loading</p>;
@@ -51,6 +64,7 @@ function App() {
         <div key={d.id} style={{margin:'20px', border:'1px solid'}}>
           <h1>{d.name}: ${d.price}</h1>
           <p>{d.description}</p>
+          <button>delete</button>
         </div>
       )
     })
