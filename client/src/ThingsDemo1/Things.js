@@ -13,6 +13,10 @@ const Things = ()=>{
         getThings()
      },[])
 
+     const removeThingFromUI =(id)=>{
+         setThings(things.filter(t=> t.id !== id))
+     }
+
      const getThings = async()=>{
         try{
           let res = await axios.get('/api/things')
@@ -29,7 +33,7 @@ const Things = ()=>{
              return <p>loading UI HERE</p>
          }
 
-         return things.map(t=> <Thing key={t.id} {...t}/>)
+         return things.map(t=> <Thing removeThingFromUIYo={removeThingFromUI} key={t.id} {...t} />)
      }
      
     
@@ -42,3 +46,6 @@ const Things = ()=>{
 }
 
 export default Things
+
+// deleting from db
+// remove from UI

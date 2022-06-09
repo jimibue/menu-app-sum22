@@ -232,5 +232,10 @@ export default App;
 
 ```
 
+# todos
+- want to do axios in things form  (update and create)
 
+- want to show page for thing React router
 
+- create a user model
+- create a user provider/context
