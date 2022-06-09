@@ -6,6 +6,8 @@ import Home from "./Home";
 import ThingsDemo1 from "./ThingsDemo1/ThingsDemo1";
 import ThingsForm from "./ThingsDemo1/ThingForm";
 import Things from "./ThingsDemo1/Things";
+import Thing from "./ThingsDemo1/Thing";
+import ThingShow from "./ThingsDemo1/ThingShow";
 
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
          <Route path='/things_demo1' element={<ThingsDemo1 />}>
            <Route  index element={<Things />}/>
            <Route  path='/things_demo1/new' element={<ThingsForm />}/>
+           <Route  path='/things_demo1/:id' element={<ThingShow />}/>
            <Route  path='/things_demo1/edit/:id' element={<ThingsForm />}/>
          </Route>
        </Route>

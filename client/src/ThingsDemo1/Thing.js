@@ -18,6 +18,7 @@ const Thing = ({id, attr1, attr2, removeThingFromUIYo})=>{
           <p>attr2:{attr2}</p>
           <button onClick={()=> deleteThing(id)}>delete</button>
           <Link to={`/things_demo1/edit/${id}`}>update</Link>
+          <Link to={`/things_demo1/${id}`}>show</Link>
         </div>
     )
 }
