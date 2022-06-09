@@ -239,3 +239,16 @@ export default App;
 
 - create a user model
 - create a user provider/context
+
+# only rails
+ user model that has username:string password:string
+ - generate model: 
+    rails g model user username:string password:string
+    rails db:migrate
+ - add users to seeds file
+    rails db:seed
+ - add users controller   
+   rails g controller api/users 
+ - create routes routes.rb
+ - fill out crud in users_controller
+ - test  

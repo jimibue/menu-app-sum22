@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     get '/things/:id', to:'things#show'
     put '/things/:id', to:'things#update'
     delete '/things/:id', to:'things#destroy'
+
+    resources :users
   end
 end
 
