@@ -6,8 +6,8 @@ import Home from "./Home";
 import ThingsDemo1 from "./ThingsDemo1/ThingsDemo1";
 import ThingsForm from "./ThingsDemo1/ThingForm";
 import Things from "./ThingsDemo1/Things";
-import Thing from "./ThingsDemo1/Thing";
 import ThingShow from "./ThingsDemo1/ThingShow";
+import Users from "./Users/Users";
 
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
        <Route element={<PageWrapper />}>
          <Route index element={<Home />} />
          <Route path='/dishes' element={<Dishes />} />
+         <Route path='/users' element={<Users />} />
          <Route path='/things_demo1' element={<ThingsDemo1 />}>
            <Route  index element={<Things />}/>
            <Route  path='/things_demo1/new' element={<ThingsForm />}/>
